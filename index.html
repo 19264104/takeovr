@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="my.styleHome.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="images/last logo.png" alt="image" /></a>
+    <ul class="nav-links">
+      <li><a href="entertainment News.html">Entertainment News</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <div class="carousel-wrapper">
+    <div class="carousel-track" id="track">
+
+    
+      <div class="carousel-slide slide-1">
+        
+          <img src="images/Audi R8.png" alt="A Racing Car On the Track">
+        <div class="slide-caption">
+        </div>
+      </div>
+
+    
+      <div class="carousel-slide slide-2">
+        
+        <img src="images/Warrior.jpg" alt="A Warrior holding a Sword surrounded by enemies and comrades">
+       <div class="slide-caption">
+      </div>
+      </div>
+  
+      
+      <div class="carousel-slide slide-3">
+       
+       <img src="images/fpsss.jpg" alt="A Guy holding a AR Rifle shooting">
+        <div class="slide-caption"> 
+
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-btn prev" onclick="move(-1)">&#8592;</button>
+    <button class="carousel-btn next" onclick="move(1)">&#8594;</button>
+
+    <div class="carousel-dots" id="dots"></div>
+  </div>
+
+  
+  <section class="bubble-section">
+
+    <div class="bubble-row">
+      <div class="bubble-img-placeholder" style="width: 180px; height: 180px; overflow: hidden;"><img src="https://t4.ftcdn.net/jpg/19/69/79/87/240_F_1969798767_uk9FGk19JJ4M9QxvmEmVq536RIzaZSah.jpg" 
+        alt="bubble-box"><br/></div>
+      <div class="bubble-box">
+        <span class="bubble-tag">Trending News</span>
+        <h3>Pokemon</h3>
+        <p>
+          The Pokémon franchise is experiencing a surge of new titles and spin-off games, with a detailed roadmap outlining the next half a decade for fans. The 30th anniversary of the franchise is set to bring a host of new releases, including Mega Dimension for Pokémon Legends.
+        </p>
+      </div>
+    </div>
+
+
+    <div class="bubble-row reverse">
+      <div class="bubble-img-placeholder"style="width: 180px; height: 180px; overflow: hidden;"><img src="https://t4.ftcdn.net/jpg/03/36/55/75/240_F_336557546_k824z0Vk7piyBo313Y2YOkITeXlvS9k2.jpg"
+         alt="Bubble image"></div>
+      <div class="bubble-box">
+        <span class="bubble-tag">Latest News
+        </span>
+        <h3>Country Restrictions</h3>
+        <p>
+          The United Kingdom government is reportedly considering a new law that would bar children under 16 from interacting with strangers in games like Fortnite and Minecraft. The proposal follows similar moves by several other countries introducing new restrictions on platforms aimed at protecting minors on apps, such as Roblox and Discord.
+        </p>
+      </div>
+    </div>
+    <div class="bubble-row">
+      <div class="bubble-img-placeholder" style="width: 180px; height: 180px; overflow: hidden;"><img src="https://t3.ftcdn.net/jpg/05/50/60/92/240_F_550609264_zq6hwYHDfj0FkizkeplvrM9qlrE6liTr.jpg"
+         alt="bubble-box"></div>
+      <div class="bubble-box">
+        <span class="bubble-tag">Trending News</span>
+        <h3>Hytale</h3>
+        <p>
+          Hytale’s recent changes have focused on making the game feel more complete, smoother to play, and better for creators. The updates added new endgame areas and tougher resources, improved melee combat and crafting speed, expanded cosmetics and character customization, introduced necromancy and other new gameplay systems, and brought in quality-of-life features like better farming, smarter climbing, animal taming, improved UI, and stronger modding tools.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const track = document.getElementById('track');
+    const slides = track.children;
+    const total = slides.length;
+    let current = 0;
+    let timer;
+
+    const dotsEl = document.getElementById('dots');
+    const dotBtns = [];
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
+      dotBtns.push(d);
+    }
+
+    function goTo(n) {
+      current = (n + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotBtns.forEach((d, i) => d.classList.toggle('active', i === current));
+      resetTimer();
+    }
+
+    function move(dir) { goTo(current + dir); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => move(1), 4500);
+    }
+
+    resetTimer();
+  </script>
+
+</body>
+</html>

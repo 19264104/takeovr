@@ -1,0 +1,254 @@
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --nav-bg: #000000;
+  --nav-text: #f0ece2;
+  --accent: #f5f5f4;
+  --body-bg: #f7f4ef;
+  --text-dark: #000000;
+  --text-mid: #000000;
+  --bubble-bg: #ffffff;
+  --bubble-border: #e0d8c8;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--body-bg);
+  color: var(--text-dark);
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 64px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--nav-text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.nav-cta {
+  background: var(--accent);
+  color: var(--nav-bg) !important;
+  padding: 8px 20px;
+  border-radius: 30px;
+  border-bottom: none !important;
+  font-weight: 500;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85; }
+ 
+.hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.hero-content {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  z-index: 1;
+  color: #fff;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 58px;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 10px 50px;
+}
+
+.category-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.category-btn {
+  display: inline-block;
+  background: linear-gradient(180deg, #ffffff, #ececec);
+  color: #111;
+  text-decoration: none;
+  border: 1px solid #999;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+}
+
+.category-btn:hover {
+  transform: translateY(-2px);
+  background: #111;
+  color: #fff;
+}
+
+.bubble-card {
+  display: grid;
+  grid-template-columns: 1.7fr 1.1fr;
+  align-items: stretch;
+  min-height: 280px;
+  border: 1px solid #bdbdbd;
+  background: #fff;
+  border-radius: 28px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.news-text {
+  padding: 28px 30px;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.news-text h3 {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.bubble-images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 0 30px 30px;
+  background: #fff;
+}
+
+.bubble-images img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid #ddd;
+}
+
+
+@media (max-width: 900px) {
+  .topbar {
+    flex-direction: column;
+    height: auto;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bubble-card {
+    grid-template-columns: 1fr;
+  }
+
+  .bubble-images {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    height: 260px;
+  }
+
+  .hero-content h1 {
+    font-size: 40px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .bubble-images {
+    grid-template-columns: 1fr;
+  }
+
+  .news-text {
+    font-size: 17px;
+    padding: 20px;
+  }
+
+  .news-text h3 {
+    font-size: 22px;
+  }
+}
+.table-wrapper {
+  border: 2px solid #444;
+  border-radius: 12px;          /* Rounded corners */
+  overflow: hidden;             /* Ensures cells do not overflow past curves */
+  display: inline-block;
+}
+
+table {
+  border-collapse: collapse;    /* Required for smooth rounded edges */
+  width: 1200px;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Remove border on last row so bottom corners look clean */
+tr:last-child td {
+  border-bottom: none;}
